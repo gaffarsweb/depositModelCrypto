@@ -1,0 +1,87 @@
+.welcome-page {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #0f172a, #020617);
+  padding: 20px;
+}
+
+.welcome-card {
+  background: #020617;
+  border-radius: 16px;
+  padding: 40px;
+  max-width: 520px;
+  width: 100%;
+  text-align: center;
+  border: 1px solid #1e293b;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+}
+
+.welcome-title {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 12px;
+}
+
+.welcome-subtitle {
+  color: #94a3b8;
+  font-size: 16px;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.welcome-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.welcome-link {
+  text-decoration: none;
+}
+
+.welcome-btn {
+  min-width: 140px;
+  padding: 14px 22px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+
+/* Primary (Login) */
+.welcome-btn.primary {
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #020617;
+}
+
+.welcome-btn.primary:hover {
+  opacity: 0.9;
+}
+
+/* Secondary (Sign Up) */
+.welcome-btn.secondary {
+  background: transparent;
+  color: #e2e8f0;
+  border: 1px solid #334155;
+}
+
+.welcome-btn.secondary:hover {
+  background: #020617;
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .welcome-actions {
+    flex-direction: column;
+  }
+
+  .welcome-btn {
+    width: 100%;
+  }
+}
