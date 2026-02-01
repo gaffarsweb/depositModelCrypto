@@ -1,0 +1,128 @@
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 30px;
+  background: linear-gradient(135deg, #020617, #020617);
+  color: #e5e7eb;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.admin-dashboard h1 {
+  font-size: 32px;
+  margin-bottom: 25px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.header button {
+  background-color: #38bdf8;
+  color: #020617;
+  font-weight: bold;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header button:hover {
+  background-color: #0ea5e9;
+}
+
+.network-card {
+  background: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.network-card h2 {
+  margin-bottom: 10px;
+  font-size: 22px;
+  color: #38bdf8;
+}
+
+.network-card p {
+  margin: 3px 0;
+  color: #94a3b8;
+  font-size: 14px;
+}
+
+.network-card table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  margin-top: 15px;
+}
+
+.network-card table th,
+.network-card table td {
+  padding: 12px 10px;
+  border-bottom: 1px solid #1e293b;
+  text-align: left;
+}
+
+.network-card table th {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.network-card table tr:hover {
+  background: rgba(56, 189, 248, 0.05);
+}
+
+.create-token-btn {
+  margin-top: 15px;
+  background-color: #22c55e;
+  color: #020617;
+  font-weight: bold;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.create-token-btn:hover {
+  background-color: #16a34a;
+}
+
+/* Token status colors */
+.status {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status.enabled {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+}
+
+.status.disabled {
+  background: rgba(156, 163, 175, 0.15);
+  color: #94a3b8;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  table {
+    font-size: 12px;
+  }
+
+  th, td {
+    padding: 8px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

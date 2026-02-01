@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { createNetwork } from '../../api/admin.api';
+import './CreateNetworkModal.css';
 
 export default function CreateNetworkModal({ onClose, onSaved }) {
   const [form, setForm] = useState({
@@ -9,20 +10,40 @@ export default function CreateNetworkModal({ onClose, onSaved }) {
     rpcUrl: '',
     type: 'EVM'
   });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
   const submit = async () => {
-    await createNetwork({
-      ...form,
-      chainId: form.chainId ? Number(form.chainId) : null
-    });
-    onSaved();
-    onClose();
+    // Simple validation
+    if (!form.name || !form.chainKey || !form.type) {
+      setError('Please fill all required fields.');
+      return;
+    }
+
+    setError('');
+    setLoading(true);
+
+    try {
+      await createNetwork({
+        ...form,
+        chainId: form.chainId ? Number(form.chainId) : null
+      });
+      onSaved();
+      onClose();
+    } catch (err) {
+      console.error(err);
+      setError(err?.response?.data?.message || 'Something went wrong!');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-box" onClick={e => e.stopPropagation()}>
         <h3>Create Network</h3>
+
+        {error && <div className="modal-error">{error}</div>}
 
         <input
           placeholder="Network Name (Ethereum)"
@@ -59,8 +80,10 @@ export default function CreateNetworkModal({ onClose, onSaved }) {
         </select>
 
         <div className="modal-actions">
-          <button onClick={onClose}>Cancel</button>
-          <button onClick={submit}>Save</button>
+          <button onClick={onClose} disabled={loading}>Cancel</button>
+          <button onClick={submit} disabled={loading}>
+            {loading ? 'Saving...' : 'Save'}
+          </button>
         </div>
       </div>
     </div>

@@ -1,0 +1,100 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-box {
+  background-color: #020617;
+  border: 1px solid #1e293b;
+  border-radius: 14px;
+  padding: 25px 30px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  color: #e5e7eb;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-box h3 {
+  margin: 0 0 10px 0;
+  color: #38bdf8;
+  font-size: 20px;
+  text-align: center;
+}
+
+.modal-box input,
+.modal-box select {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  background-color: #020617;
+  color: #e5e7eb;
+  font-size: 14px;
+  width: 100%;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+  outline: none;
+  border-color: #38bdf8;
+  box-shadow: 0 0 5px rgba(56,189,248,0.5);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-actions button {
+  padding: 8px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.modal-actions button:first-child {
+  background-color: #1e293b;
+  color: #e5e7eb;
+}
+
+.modal-actions button:first-child:hover {
+  background-color: #374151;
+}
+
+.modal-actions button:last-child {
+  background-color: #38bdf8;
+  color: #020617;
+}
+
+.modal-actions button:last-child:hover {
+  background-color: #0ea5e9;
+}
+
+.modal-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.modal-error {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  text-align: center;
+}

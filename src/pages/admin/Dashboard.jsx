@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import { getNetworksFull } from '../../api/admin.api';
-import CreateTokenModal from './CreateTokenModal'
-import CreateNetworkModal from './CreateNetworkModal'
+import CreateTokenModal from './CreateTokenModal';
+import CreateNetworkModal from './CreateNetworkModal';
+import './AdminDashboard.css';
 
 export default function AdminDashboard() {
   const [networks, setNetworks] = useState([]);
@@ -18,30 +19,21 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div style={{ padding: 20 }}>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+    <div className="admin-dashboard">
+      <div className="header">
         <h1>Networks</h1>
-        <button onClick={() => setShowNetworkModal(true)}>
-          + Create Network
-        </button>
+        <button onClick={() => setShowNetworkModal(true)}>+ Create Network</button>
       </div>
 
       {networks.map(network => (
-        <div key={network._id} style={{
-          border: '1px solid #ccc',
-          marginBottom: 20,
-          padding: 15
-        }}>
-          <h2>
-            {network.name} ({network.type})
-          </h2>
+        <div key={network._id} className="network-card">
+          <h2>{network.name} ({network.type})</h2>
           <p>Chain ID: {network.chainId || '-'}</p>
           <p>RPC: {network.rpcUrl}</p>
           <p>Status: {network.isEnabled ? 'Enabled' : 'Disabled'}</p>
 
-          <h3 style={{ marginTop: 10 }}>Tokens</h3>
-
-          <table border="1" width="100%">
+          <h3 style={{ marginTop: '1rem' }}>Tokens</h3>
+          <table>
             <thead>
               <tr>
                 <th>Symbol</th>
@@ -65,7 +57,7 @@ export default function AdminDashboard() {
           </table>
 
           <button
-            style={{ marginTop: 10 }}
+            className="create-token-btn"
             onClick={() => setActiveNetwork(network)}
           >
             + Create Token
@@ -73,17 +65,12 @@ export default function AdminDashboard() {
         </div>
       ))}
 
-      {/* MODALS */}
+      {/* Modals */}
       {showNetworkModal && (
         <CreateNetworkModal onClose={() => setShowNetworkModal(false)} onSaved={load} />
       )}
-
       {activeNetwork && (
-        <CreateTokenModal
-          network={activeNetwork}
-          onClose={() => setActiveNetwork(null)}
-          onSaved={load}
-        />
+        <CreateTokenModal network={activeNetwork} onClose={() => setActiveNetwork(null)} onSaved={load} />
       )}
     </div>
   );
