@@ -52,7 +52,7 @@ export default function UserDashboard() {
           <tbody>
             {wallets.map(w => (
               <tr key={w._id}>
-                <td>{w.network?.name}</td>
+                <td>{w.network}</td>
                 <td className="mono">{w.address}</td>
                 <td>{w.type}</td>
               </tr>
